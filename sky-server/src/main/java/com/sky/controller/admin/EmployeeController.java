@@ -1,6 +1,7 @@
 package com.sky.controller.admin;
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
 import com.sky.properties.JwtProperties;
@@ -76,4 +77,18 @@ public class EmployeeController {
         return Result.success();
     }
 
+    // TODO: 新增员工功能
+
+    /**
+     * 新增员工的功能
+     * @param employeeDTO
+     * @return
+     */
+    @PostMapping
+    @ApiOperation("新增员工")
+    public Result save(@RequestBody EmployeeDTO employeeDTO) { // 由于是json数据，所以说需要添加@RequestBody
+        log.info("新增员工：{}", employeeDTO.getName());
+        employeeService.save(employeeDTO);
+        return null;
+    }
 }
